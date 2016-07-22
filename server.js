@@ -1,9 +1,9 @@
 var express = require('express');
 var app = express();
 var multer = require('multer');
-//var upload = multer({dest: 'uploads/'});
+var upload = multer({dest: 'uploads/'});
 
-app.post('/profile', multer({dest: 'uploads/'}).single('avatar'), function (req, res) {
+app.post('/profile', upload.single('avatar'), function (req, res) {
     res.end(JSON.stringify({'file size':req.file.size}));
 })
 
